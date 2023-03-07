@@ -1,0 +1,428 @@
+    $container: 1230px;
+    $black: rgba(0, 0, 0, 1);
+    $text: 16px;
+    $bg-purp: #003B72;
+    $bg-blue: #50CAFF;
+    $gray: #EBE7FF;
+    $white: rgba(255, 255, 255, 1);
+    $white-bg: rgba(252, 252, 252, 1);
+    $text-purp: rgba(119, 97, 255, 1);
+    $black-opacity: rgba(0, 0, 0, 0.25);
+    $shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+    $rubik:'Rubik',
+    sans-serif;
+    @mixin flex($jc, $ai) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: $jc;
+        align-items: $ai;
+    }
+    
+    ul {
+        list-style-position: inside;
+    }
+    
+    @mixin button {
+        border: none;
+        outline: none;
+        font-size: 14px;
+        border-radius: 5px;
+        background-color: $text-purp;
+        color: $white;
+        cursor: pointer;
+        outline: 2px solid transparent;
+        transition: 0.4s;
+        &:hover {
+            background-color: $white;
+            color: $text-purp;
+            outline: 2px solid $text-purp;
+        }
+    }
+    
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-size: $text;
+        font-family: $rubik;
+    }
+    
+    body {
+        background-color: $white-bg;
+    }
+    
+    .wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 55px 60px 0 190px;
+        padding: 15px 20px;
+        // padding: 0 15px;
+        // outline: 1px red solid;
+    }
+    
+    .navigation {
+        width: 100%;
+        @include flex(flex-start, flex-start);
+        color: $white;
+    }
+    
+    .navigation-left-content {
+        height: 100vh;
+        background-color: $bg-purp;
+        width: 190px;
+        position: absolute;
+        left: 0;
+        button {
+            width: 150px;
+            height: 40px;
+            padding: 12px 25px;
+            display: block;
+            margin: 0 auto;
+            @include button()
+        }
+    }
+    
+    .navigation-right-content {
+        position: absolute;
+        right: 0;
+        width: calc(100% - 190px);
+        background-color: $bg-blue;
+        height: 55px;
+        padding: 10px 40px 12px;
+        @include flex(space-between, center)
+    }
+    
+    .logo {
+        width: 100%;
+        padding: 20px 20px 18px 20px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    .logo-help {
+        position: absolute;
+        bottom: 15px;
+        left: 20px;
+        &__help {
+            @include flex(flex-start, center);
+            margin-bottom: 20px;
+            p {
+                font-size: 14px;
+                font-weight: 300;
+                margin-left: 15px;
+            }
+        }
+    }
+    
+    .navigation-left-content__links {
+        div {
+            padding: 14px 20px;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: 0.4s;
+            cursor: pointer;
+            &:hover {
+                background-color: $white;
+                color: $text-purp;
+                path {
+                    fill: $text-purp
+                }
+            }
+            p {
+                font-size: 14px;
+                margin-left: 15px;
+            }
+            path {
+                fill: $white;
+                transition: 0.4s;
+            }
+            @include flex(flex-start, center)
+        }
+    }
+    
+    .nav-profile {
+        font-size: 28px;
+    }
+    
+    .navigation-right-content__links {
+        @include flex(space-between, center)
+    }
+    
+    .left-links {
+        img {
+            margin-right: 15px;
+        }
+        margin-right: 85px;
+    }
+    
+    .right-links {
+        @include flex(space-between, center);
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 50px;
+        .circle {
+            border-radius: 50%;
+            border: 1px white solid;
+            img {
+                display: block;
+            }
+            margin-right: 10px;
+        }
+    }
+    
+    .record {
+        width: 475px;
+        height: 175px;
+        box-shadow: rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        background-color: $white;
+        box-shadow: $shadow;
+        padding: 20px;
+        &__date {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        &__location {
+            font-size: 14px;
+            width: 65%;
+            margin-bottom: 10px;
+        }
+        margin-right: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .record-name-btn {
+        @include flex (space-between, flex-end);
+        &__name {
+            @include flex(flex-start, center);
+            img {
+                margin-right: 10px;
+            }
+            p {
+                color: $gray;
+                &:first-child {
+                    font-weight: 500;
+                    color: $black;
+                }
+            }
+        }
+    }
+    
+    .record-name {
+        margin-bottom: 5px;
+    }
+    
+    .record-btn {
+        @include button();
+        padding: 12px 15px;
+    }
+    
+    .intro {
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .records-main {
+        @include flex(space-between, center);
+        &__records {
+            @include flex(space-between, center)
+        }
+    }
+    
+    .records-main__link {
+        font-size: 14px;
+        text-align: center;
+        .account-link {
+            color: $bg-blue;
+        }
+        p {
+            margin-bottom: 5px;
+        }
+    }
+    
+    .cart {
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+    
+    .cart-items {
+        @include flex(space-between, center);
+    }
+    
+    .cart-item {
+        height: 183px;
+        box-shadow: $shadow;
+        background-color: $white;
+        width: calc(50% - 7.5px);
+        @include flex(flex-start, center);
+        border-radius: 5px;
+        margin-top: 15px;
+        transition: 0.4s;
+        outline: 2px solid transparent;
+        cursor: pointer;
+        &:hover {
+            outline: 2px solid $bg-blue;
+            .cart-item__img {
+                background-color: $bg-blue;
+            }
+            .line {
+                background-color: $bg-blue;
+            }
+        }
+    }
+    
+    .cart-item__img {
+        width: 25%;
+        @include flex(center, center);
+        transition: 0.4s;
+        height: 100%;
+    }
+    
+    .line {
+        width: 100%;
+        height: 2px;
+        background-color: $gray;
+        margin: 10px 0 15px 0;
+        transition: 0.4s;
+    }
+    
+    .cart-item__text {
+        width: 75%;
+        padding: 20px 35px;
+        p {
+            font-weight: 400;
+            &:first-child {
+                font-size: 28px;
+                text-align: center;
+            }
+        }
+        li {
+            font-size: 16px;
+            line-height: 127%;
+            font-weight: 400;
+            &::marker {
+                color: $bg-blue;
+            }
+            margin-bottom: 5px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    .appointment-link {
+        text-decoration: none;
+        margin-left: 15px;
+        margin-bottom: 10px;
+        @include flex(flex-start, center);
+        p {
+            margin-left: 15px;
+            color: $black;
+        }
+    }
+    
+    .appointment-content {
+        @include flex(space-between, flex-start)
+    }
+    
+    .records-list {
+        height: 650px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: min-content;
+        &::-webkit-scrollbar {
+            width: 8px;
+            background-color: $gray;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: $bg-purp;
+            border-radius: 5px;
+        }
+    }
+    
+    .calendar {
+        width: 575px;
+        height: 480px;
+        background-color: $gray;
+        border-radius: 5px;
+    }
+    
+    .calendar-month {
+        width: 100%;
+        height: 57px;
+        background-color: $text-purp;
+        border-radius: 5px 5px 0 0;
+        text-align: center;
+        color: $white;
+        font-size: 14px;
+        font-weight: 300;
+        @include flex(center, center);
+        p {
+            margin: 0 35px;
+        }
+    }
+    
+    .calendar-items {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+    
+    .calendar-items__week-days {
+        width: 100%;
+        @include flex(space-between, center)
+    }
+    
+    .week-day {
+        width: calc(100%/7);
+        text-align: center;
+        font-weight: 300;
+        color: $black;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .day {
+        width: calc(100%/7);
+        background-color: $white;
+        padding: 10px 15px;
+        height: 63px;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    
+    .calendar-items__days {
+        @include flex(flex-start, center)
+    }
+    
+    .passive {
+        background-color: $gray;
+        color: $black-opacity;
+    }
+    
+    .active {
+        position: relative;
+        &::after {
+            content: attr(data-number);
+            position: absolute;
+            color: $white;
+            width: 22px;
+            height: 22px;
+            background-color: $bg-blue;
+            border-radius: 50%;
+            @include flex (center, center);
+            right: 10px;
+            bottom: 10px;
+            font-size: 14px;
+            line-height: 84%;
+            font-weight: 300;
+        }
+    }
